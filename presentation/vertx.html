@@ -1,0 +1,364 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<title>(Vert.x)</title>
+<meta name="author" content="(Toby Crawley)"/>
+<link rel="stylesheet" href="./css/reveal.min.css"/>
+<link rel="stylesheet" href="./css/theme/custom.css" id="theme"/>
+<link rel="stylesheet" href="custom.css"/>
+<link rel="stylesheet" href="./css/print/pdf.css" type="text/css" media="print"/>
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+<meta name="description" content="Developing asynchronous polyglot applications with Vert.x.">
+</head>
+<body>
+<div class="reveal">
+<div class="slides">
+<section>
+<h2>Building decoupled applications with Vert.x</h2><h3>@tcrawley</h3><h4>Clojure/Conj 2013</h4></section>
+
+<section>
+<section id="sec-1"  data-state="quote">
+
+<h2>What is Vert.x?</h2>
+<p>
+“Vert.x is a lightweight, high performance application platform for the JVM that's designed for modern mobile, web, and enterprise applications.”
+</p>
+</section>
+</section>
+<section>
+<section id="sec-2"  data-state="quote">
+
+<h2>What is a human?</h2>
+<p>
+“A Human is a bipedal mammal that procreates and turns food into waste."
+</p>
+</section>
+</section>
+<section>
+<section id="sec-3" >
+
+<h2>What problems does Vert.x solve?</h2>
+<p class="fragment roll-in">
+The JVM networking packages are byzantine
+</p>
+
+<p class="fragment roll-in">
+Efficiency requires concurrency, which is error-prone
+</p>
+
+<p class="fragment roll-in">
+Everything can't be asynchronous
+</p>
+
+<p class="fragment roll-in">
+Plumbing decoupled components can be painful
+</p>
+</section>
+</section>
+<section>
+<section id="sec-4" >
+
+<h2>How does Vert.x solve these problems?</h2>
+<p>
+The JVM networking packages are byzantine
+</p>
+<p class="fragment roll-in">
+<i><b>An abstraction over Netty</b></i>
+</p>
+
+<p>
+Efficiency requires concurrency, which is error-prone
+</p>
+<p class="fragment roll-in">
+<i><b>Thread confinement</b></i>
+</p>
+
+<p>
+Everything can't be asynchronous
+</p>
+<p class="fragment roll-in">
+<i><b>Sync/async hybrid</b></i>
+</p>
+
+<p>
+Plumbing decoupled components can be painful
+</p>
+<p class="fragment roll-in">
+<i><b>Built-in event bus</b></i>
+</p>
+</section>
+
+</section>
+<section>
+<section id="sec-5" >
+
+<h2>Polyglot</h2>
+<ul class="org-ul">
+<li>Java
+</li>
+<li>JRuby
+</li>
+<li>Jython
+</li>
+<li>JavaScript/CoffeeScript (Rhino, DynJS*)
+</li>
+<li>Groovy
+</li>
+<li>Scala*
+</li>
+<li>PHP*
+</li>
+<li>Clojure*
+</li>
+</ul>
+
+<p>
+(* in-progress)
+</p>
+</section>
+
+</section>
+<section>
+<section id="sec-6" >
+
+<h2>Why Async?</h2>
+</section>
+</section>
+<section>
+<section id="sec-7"  data-state="cited dark-bg" class="suppress">
+
+<h2>Why Async?</h2>
+<p>
+<img src="./standing2.jpg" alt="standing2.jpg" />
+<a href="http://www.flickr.com/photos/taestell/10366923794/">http://www.flickr.com/photos/taestell/10366923794/</a>
+</p>
+</section>
+</section>
+<section>
+<section id="sec-8" >
+
+<h2>Reactor Loop(s)</h2>
+<p class="fragment roll-in">
+Defaults to one/core
+</p>
+<p class="fragment roll-in">
+Verticle tied to one loop
+</p>
+<p class="fragment roll-in">
+Thread confinement
+</p>
+</section>
+
+</section>
+<section>
+<section id="sec-9" >
+
+<h2>Distributed Event Bus</h2>
+<ul class="org-ul">
+<li class="fragment roll-in">Simple (String, int, byte[], etc) &amp; structured (JSON) messages
+</li>
+<li class="fragment roll-in">Publish/Subscribe 
+</li>
+<li class="fragment roll-in">Point-to-point
+</li>
+<li class="fragment roll-in">Request/Response
+</li>
+<li class="fragment roll-in">Clusterable (Hazelcast, browser)
+</li>
+<li class="fragment roll-in">Transient
+</li>
+</ul>
+</section>
+
+</section>
+<section>
+<section id="sec-10"  data-state="cited dark-bg" class="suppress">
+
+<h2>Sample App</h2>
+<p>
+<img src="./cheese-crop.png" alt="cheese-crop.png" />
+<a href="http://www.flickr.com/photos/nh567/2774100797">http://www.flickr.com/photos/nh567/2774100797</a>
+</p>
+</section>
+
+</section>
+<section>
+<section id="sec-11"  class="suppress">
+
+<h2>Sample Application</h2>
+<img src="./vertx-rivulet-simple.png" alt="vertx-rivulet-simple.png" />
+</section>
+
+</section>
+<section>
+<section id="sec-12"  class="suppress">
+
+<h2>Sample Application</h2>
+<img src="./vertx-rivulet.png" alt="vertx-rivulet.png" />
+</section>
+</section>
+<section>
+<section id="sec-13" >
+
+<h2>Features</h2>
+<ul class="org-ul">
+<li><i>HTTP(S)</i>, TCP, UDP, WebSocket servers
+</li>
+<li>Ditto clients, plus DNS
+</li>
+<li><i>Distributed Event Bus</i>
+</li>
+<li><i>Timers</i>
+</li>
+<li>Async FS
+</li>
+<li>Embeddable
+</li>
+</ul>
+</section>
+</section>
+<section>
+<section id="sec-14" >
+
+<h2>Gains</h2>
+<ul class="org-ul">
+<li>Hides Netty complexity
+</li>
+<li>Efficient
+</li>
+<li>Distributed Event Bus
+</li>
+<li>Thread confinement
+</li>
+<li>Polyglot
+</li>
+<li>Clusterable
+</li>
+</ul>
+</section>
+</section>
+<section>
+<section id="sec-15" >
+
+<h2>Losses</h2>
+<ul class="org-ul">
+<li class="fragment roll-in">Hides Netty complexity
+</li>
+<li class="fragment roll-in">Language ecosystems
+</li>
+<li class="fragment roll-in">"Callback Hell"
+</li>
+</ul>
+</section>
+
+</section>
+<section>
+<section id="sec-16"  data-state="cited dark-bg" class="suppress">
+
+<h2>Don't block&#x2026;</h2>
+<p>
+<img src="./reactor2.jpg" alt="reactor2.jpg" />
+<a href="http://www.flickr.com/photos/subindie/955633308">http://www.flickr.com/photos/subindie/955633308</a>
+</p>
+</section>
+</section>
+<section>
+<section id="sec-17" >
+
+<h2>Worker Verticles</h2>
+<p>
+Runs on a thread pool, so <i>can</i> block.
+</p>
+<p class="fragment roll-in">
+Still thread-confined by default.
+</p>
+</section>
+</section>
+<section>
+<section id="sec-18"  data-state="mint">
+
+<h2>Simple, without being simplistic.</h2>
+
+</section>
+</section>
+<section>
+<section id="sec-19" >
+
+<h2>Resources</h2>
+<p>
+<a href="http://vertx.io/">http://vertx.io/</a>
+</p>
+
+<p>
+<a href="https://github.com/vert-x/mod-lang-clojure/">https://github.com/vert-x/mod-lang-clojure/</a>
+</p>
+
+<p>
+<a href="https://github.com/isaiah/lein-vertx/">https://github.com/isaiah/lein-vertx/</a>
+</p>
+
+<p>
+<a href="https://github.com/stream1984/ring-vertx-adapter/">https://github.com/stream1984/ring-vertx-adapter/</a>
+</p>
+
+<p>
+<a href="https://github.com/tobias/vertx-clojure-conj-2013/">https://github.com/tobias/vertx-clojure-conj-2013/</a>
+</p>
+</section>
+</section>
+<section>
+<section id="sec-20"  data-state="cited dark-bg" class="suppress">
+
+<h2>Questions?</h2>
+
+<p>
+<img src="./hands.jpg" alt="hands.jpg" />
+<a href="http://www.flickr.com/photos/coldtaxi/426162862/">http://www.flickr.com/photos/coldtaxi/426162862/</a>
+</p>
+</section>
+</section>
+</div>
+</div>
+<script src="./lib/js/head.min.js"></script>
+<script src="./js/reveal.min.js"></script>
+<script>
+
+        		// Full list of configuration options available here:
+        		// https://github.com/hakimel/reveal.js#configuration
+        		Reveal.initialize({
+        			controls: false,
+        			progress: false,
+        			history: true,
+        			center: true,
+        			rollingLinks: true,
+        			keyboard: true,
+        			overview: true,
+        			 // slide width
+        			 // slide height
+        			margin: 0.10, // slide margin
+        			minScale: 0.50, // slide minimum scaling factor
+        			maxScale: 2.50, // slide maximum scaling factor
+
+
+        			theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+        			transition: Reveal.getQueryHash().transition || 'linear', // default/cube/page/concave/zoom/linear/fade/none
+        			transitionSpeed: 'fast',
+
+        			// Optional libraries used to extend on reveal.js
+        			dependencies: [
+        				{ src: './lib/js/classList.js', condition: function() { return !document.body.classList; } }
+        				,{ src: './plugin/markdown/showdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } }
+        				,{ src: './plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } }
+        				,{ src: './plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } }
+        				,{ src: './plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } }
+        				,{ src: './plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
+        				// { src: './plugin/search/search.js', async: true, condition: function() { return !!document.body.classList; } }
+        				// { src: './plugin/remotes/remotes.js', async: true, condition: function() { return !!document.body.classList; } }
+         				
+        			]
+        		});
+</script>
+</body>
+</html>

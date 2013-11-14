@@ -1,0 +1,40 @@
+section.suppress h2,
+section.suppress h3 {
+  display: none;
+}
+
+.dark-bg .reveal .state-background {
+  background-color: #000;
+}
+
+.dark-bg h2,
+.dark-bg h3,
+.dark-bg a {
+  color: #ddd !important;
+}
+
+.cited a {
+  position: relative;
+  bottom: 25px;
+  font-size: 0.6em;
+}
+
+li {
+  list-style-type: square;
+}
+
+.quote p {
+  display: block;
+  position: relative;
+  width: 70%
+  margin: 5px auto;
+  padding: 5px;
+  font-style: italic;
+  font-size: 1.4em;
+  box-shadow: 0 0 2px rgba(0,0,0,.2);
+}
+
+/*html {
+  font-family: "Liberation Sans" sans-serif !important;
+}*/
+

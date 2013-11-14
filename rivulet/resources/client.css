@@ -1,0 +1,68 @@
+body {
+    font-size: 2em;
+    font-family: sans-serif;
+    padding-top: 150px;
+}
+
+input, button {
+  font-size: 1em;
+}
+
+h4 {
+  text-decoration: underline;
+  margin-bottom: 10px;
+}
+
+div.filter {
+  padding: 3px;
+  margin: 3px;
+  width: 302px;
+  float: left;
+}
+
+.clear {
+    clear: both;
+}
+
+.title {
+  font-weight: bold;
+  font-size: 1.4em;
+  float: left;
+}
+
+.delete-button {
+    float: right;
+}
+
+span.stat {
+  font-style: italic;
+}
+
+div.results {
+  max-height: 200px;
+}
+
+#filters, #raw-wrapper {
+  float: left;
+}
+
+#filters {
+  width: 66%;
+}
+
+#raw-wrapper {
+  width: 33%;
+}
+
+
+#raw-stream {
+  max-height: 300px;
+}
+
+#raw-stream, div.results {
+  width: 300px;
+  overflow: auto;
+  margin-top: 5px;
+  background-color: #ccc;
+  border: 1px solid #333;
+}
