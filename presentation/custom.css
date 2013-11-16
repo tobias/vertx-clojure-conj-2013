@@ -34,7 +34,8 @@ li {
   box-shadow: 0 0 2px rgba(0,0,0,.2);
 }
 
-/*html {
-  font-family: "Liberation Sans" sans-serif !important;
-}*/
+#title-slide h2 {
+    line-height: 1.1em;
+}
+
 

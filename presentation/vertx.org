@@ -13,7 +13,7 @@
 #+REVEAL_HLEVEL: 1
 #+REVEAL_HEAD_PREAMBLE: <meta name="description" content="Developing asynchronous polyglot applications with Vert.x.">
 #+REVEAL_EXTRA_CSS: custom.css
-#+REVEAL_TITLE_SLIDE_TEMPLATE: <h2>Building decoupled applications with Vert.x</h2><h3>@tcrawley</h3><h4>Clojure/Conj 2013</h4>
+#+REVEAL_TITLE_SLIDE_TEMPLATE: <div id="title-slide"><h2>Building decoupled polyglot applications with Vert.x</h2><h3>@tcrawley</h3><h4>Clojure/Conj 2013</h4></div>
 
 * What is Vert.x?
   :PROPERTIES:
@@ -145,10 +145,11 @@
 #+ATTR_REVEAL: :frag roll-in
   Still thread-confined by default.
 
-* Simple, without being simplistic.
- :PROPERTIES:
- :reveal_data_state: mint
- :END:
+* Ancillary Projects
+#+ATTR_REVEAL: :frag roll-in
+  - Ring Vert.x Adapter - [[https://github.com/stream1984/ring-vertx-adapter/]]
+  - NoDyn - http://nodyn.io
+  - Yoke - http://pmlopes.github.io/yoke/
 
 * Resources
   http://vertx.io/
@@ -157,9 +158,12 @@
 
   [[https://github.com/isaiah/lein-vertx/]]
 
-  [[https://github.com/stream1984/ring-vertx-adapter/]]
-
   [[https://github.com/tobias/vertx-clojure-conj-2013/]]
+
+* Simple, without being simplistic.
+ :PROPERTIES:
+ :reveal_data_state: mint
+ :END:
 
 * Questions?
   :PROPERTIES:
