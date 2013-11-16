@@ -1,6 +1,6 @@
 (ns rivulet.stats-ca
   (:require [vertasync.eventbus :as eb]
-            [clojure.core.async :refer [<! >! chan go-loop]]))
+            [clojure.core.async :as async]))
 
 (defn handle-redis-response [cfg [filter {:keys [status value message]
                                           :as response}]]
@@ -9,25 +9,19 @@
     (throw (ex-info message response))))
 
 (defn update-match-count [cfg [filter _]]
-  (let [filter-reply-chan (chan)
-        reply-chan (eb/send-with-reply-chan "io.vertx.mod-redis"
-                                            {:command "incr" :args [filter]})]
-    (>! filter-reply-chan [filter (<! reply-chan)])
-    filter-reply-chan))
-
-(defmacro <!->>
-  "Threading macro that takes from the channel returned by each step,
-     threading the result to the next."
-  [& args]
-  `(->>...))
+  [filter
+   (async/<! (eb/send-with-reply-chan "io.vertx.mod-redis"
+                                      {:command "incr" :args [filter]}))])
 
 (defn init [cfg]
   (vertx/deploy-module "io.vertx~mod-redis~1.1.2")
-  (go-loop [results (eb/message-chan (:result-address cfg))]
-    (<!->> results
-           update-match-count
-           (handle-redis-response cfg))
-    (recur results)))
+  (let [results (eb/message-chan (:result-address cfg))]
+    (async/go-loop []
+      (when-let [msg (async/<! results)]
+        (->> msg
+             update-match-count
+             (handle-redis-response cfg))
+        (recur)))))
 
 (comment
   ;; !!! WARNING: VAPORWARE !!!
