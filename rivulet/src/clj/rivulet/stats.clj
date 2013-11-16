@@ -1,6 +1,6 @@
 (ns rivulet.stats
-  (require [vertx.core :as vertx]
-           [vertx.eventbus :as eb]))
+  (:require [vertx.core :as vertx]
+            [vertx.eventbus :as eb]))
 
 (defn init [cfg]
   (vertx/deploy-module "io.vertx~mod-redis~1.1.2")
