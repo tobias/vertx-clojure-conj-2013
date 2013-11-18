@@ -8,5 +8,6 @@ words dict in `data/words` to make it easier to get started with. If
 you do have redis available, you can use it by swapping the init fns
 in `src/clj/rivulet/stats.clj`.
 
-Run with `lein vertx run`, then point your browser at
+First, compile the clojurescript with `lein cljsbuild once`, then run
+with `lein vertx run` and point your browser at
 <http://localhost:8080>.
